@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block search %}
+<form method="POST">  
+    {% csrf_token %}
+    <div class="container d-flex justify-content-center" >
+        <div class="card mt-5 p-4">
+            <p> <h3 ><i>Search In Github</i> <h3></p>
+            <div class="input-group mb-3"> <input type="text"  name="user" class="form-control">
+                <div class="input-group-append"> <input type="submit" name="submit" class="btn btn-success" Value="Search"> <i class="fas fa-search"></i></div>
+            </div>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+
+{% if user %}
+<div class="container">
+    <h2><i>Github User information<i> </h2>
+    <p><i>This table will show public information of github user</i> </p>
+    
+   
+      <table class="table table-bordered">
+        <thead class="alert alert-success">
+          <tr>
+            <th >ID</th>
+            <th >NAME</th>
+            <th >URL</th>
+            <th >REPOSITORY</th>
+            <th >BIO</th>
+            <th >Followers</th>
+            <th >Following</th>
+            <th >Created</th>
+            <th >Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr   class="text-center">
+            <td >{{user_info.id}}</td>
+            <td >{{user_info.name}}</td>
+            <td>{{user_info.html_url}}</td>
+            <td>{{user_info.repos_url}}</td>
+            <td>{{user_info.bio}}</td>
+            <td>{{user_info.followers}}</td>
+            <td>{{user_info.following}}</td>
+            <td>{{user_info.created_at}}</td>
+            <td>{{user_info.updated_at}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
+
+
+
+
+
